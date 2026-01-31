@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idle Farm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Resource Display -->
+        <header id="resource-bar">
+            <div class="resource">
+                <span class="resource-icon">&#x1F4B0;</span>
+                <span id="coin-display">0</span>
+                <span class="resource-label">Coins</span>
+            </div>
+            <div class="resource">
+                <span class="resource-icon">&#x1F331;</span>
+                <span id="seed-display">10</span>
+                <span class="resource-label">Seeds</span>
+            </div>
+        </header>
+
+        <!-- Main Game Area -->
+        <main id="game-area">
+            <!-- Farm Grid -->
+            <section id="farm-section">
+                <h2>Your Farm</h2>
+                <div id="farm-grid"></div>
+            </section>
+
+            <!-- Shop Panel -->
+            <aside id="shop-panel">
+                <h2>Shop</h2>
+
+                <div class="shop-section">
+                    <h3>Seeds</h3>
+                    <div class="shop-item" id="buy-seeds">
+                        <div class="shop-item-info">
+                            <span class="shop-item-name">Wheat Seeds (x5)</span>
+                            <span class="shop-item-cost">10 coins</span>
+                        </div>
+                        <button class="buy-btn" data-action="buy-seeds">Buy</button>
+                    </div>
+                </div>
+
+                <div class="shop-section">
+                    <h3>Upgrades</h3>
+                    <div class="shop-item" id="upgrade-speed">
+                        <div class="shop-item-info">
+                            <span class="shop-item-name">Growth Speed</span>
+                            <span class="shop-item-desc">Crops grow 10% faster</span>
+                            <span class="shop-item-cost" id="speed-cost">50 coins</span>
+                        </div>
+                        <button class="buy-btn" data-action="upgrade-speed">Buy</button>
+                    </div>
+                    <div class="shop-item" id="buy-tile">
+                        <div class="shop-item-info">
+                            <span class="shop-item-name">Expand Farm</span>
+                            <span class="shop-item-desc">Add one tile</span>
+                            <span class="shop-item-cost" id="tile-cost">25 coins</span>
+                        </div>
+                        <button class="buy-btn" data-action="buy-tile">Buy</button>
+                    </div>
+                </div>
+
+                <div class="shop-section">
+                    <h3>Crop Types</h3>
+                    <div id="crop-selector">
+                        <button class="crop-btn selected" data-crop="wheat" title="Wheat - 10s grow, 5 coins">
+                            <span class="crop-preview" style="background: #FFD700;"></span>
+                            Wheat
+                        </button>
+                        <button class="crop-btn locked" data-crop="carrot" title="Carrot - 30s grow, 15 coins (Unlock: 100 coins)">
+                            <span class="crop-preview" style="background: #FFA500;"></span>
+                            Carrot
+                            <span class="unlock-cost">100</span>
+                        </button>
+                        <button class="crop-btn locked" data-crop="tomato" title="Tomato - 60s grow, 40 coins (Unlock: 500 coins)">
+                            <span class="crop-preview" style="background: #FF6347;"></span>
+                            Tomato
+                            <span class="unlock-cost">500</span>
+                        </button>
+                        <button class="crop-btn locked" data-crop="pumpkin" title="Pumpkin - 120s grow, 100 coins (Unlock: 2000 coins)">
+                            <span class="crop-preview" style="background: #FF8C00;"></span>
+                            Pumpkin
+                            <span class="unlock-cost">2000</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="shop-section">
+                    <h3>Data</h3>
+                    <button id="save-btn" class="action-btn">Save Game</button>
+                    <button id="reset-btn" class="action-btn danger">Reset Game</button>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Stats Bar -->
+        <footer id="stats-bar">
+            <span>Total Harvested: <span id="total-harvested">0</span></span>
+            <span>Total Earned: <span id="total-earned">0</span> coins</span>
+            <span id="save-status">Auto-saves every 30s</span>
+        </footer>
+    </div>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="hidden"></div>
+
+    <!-- Notification area -->
+    <div id="notifications"></div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/save.js"></script>
+    <script src="js/grid.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
